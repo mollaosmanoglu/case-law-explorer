@@ -1,6 +1,7 @@
 FROM apache/airflow:2.3.0-python3.8
 LABEL org.opencontainers.image.source=https://github.com/maastrichtlawtech/case-law-explorer
-RUN apt-get update && apt-get autoremove -yqq --purge && apt-get clean
+USER root
+RUN apt-get update && apt-get install -y gcc python3-dev && apt-get autoremove -yqq --purge && apt-get clean
 USER airflow 
 RUN mkdir -p /opt/airflow/data/raw
 RUN mkdir -p /opt/airflow/data/processed
