@@ -39,7 +39,7 @@ def get_echr_setup_args(last_index):
 
 def setup_db():
     df_filepath = get_path_raw(CSV_ECHR_CASES)
-    download = False
+    download = True
     if download:
         json_filepath = JSON_FULL_TEXT_ECHR
         for i in range(-1,
