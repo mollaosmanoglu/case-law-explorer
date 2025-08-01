@@ -31,11 +31,5 @@ with DAG(
         task_id='data_transformation',
         wait_for_completion=True
     )
-    task3 = TriggerDagRunOperator(
-        trigger_dag_id='data_loading',
-        task_id='data_loading',
-        wait_for_completion=True
-    )
-
-# Extraction -> Transformation -> Loading
-task1 >> task2 >> task3
+# DB Setup -> Transformation
+task1 >> task2

@@ -44,7 +44,7 @@ def echr_extract(args):
     parser.add_argument('--fresh', help='Flag for running a complete download regardless of existing downloads',
                         action='store_true')
     parser.add_argument('--language', nargs='+', help='The languages to be extracted',
-                        required=False, default=["ENG", "FRE"])
+                        required=False, default=["DUT", "ENG"])  # Dutch first, English as fallback
 
     args, unknown = parser.parse_known_args(args)
     # set up locations
@@ -117,7 +117,7 @@ def echr_extract(args):
             json.dump(full_text, f)
         logging.info("Adding Nodes and Edges lists to storage")
         # Getting nodes and edges, citation-based. For creating a citation graph
-        nodes, edges = echr.get_nodes_edges(dataframe=metadata, save_file="n")
+        nodes, edges = echr.get_nodes_edges(metadata, save_file="n")
         # get only the ecli column in nodes
         nodes = nodes[['ecli']]
 
